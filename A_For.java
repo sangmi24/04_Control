@@ -141,11 +141,12 @@ public class A_For {
 		
 		//필수 => 변수 (한바퀴 돌때마다 변수에 누적해서 기록)
 		int sum =0; //0으로 초기화 하는 이유: 누적시 정확한 값을 얻기 위해서 
+		            //변수 선언 
 		
 		for (int i=1; i<=10; i++) {
 		   sum = sum + i; //  sum += i;
 		   
-		   // 1+ 2+ 3+ 4+...+ 10 = 50 형태로 출력하고 싶다
+		   // 1+ 2+ 3+ 4+...+ 10 = 55 형태로 출력하고 싶다
 		   
 		   // 1+ 2+ 3+ 4+...+ 10 +
 		   //System.out.print(i +" + ");
@@ -280,11 +281,204 @@ public class A_For {
 	 9번째 출력문
 	 10번째 출력문
     */    
+	public void method7() {
+		
+		// 1에서 부터 10까지의 정수 중에서 홀수만 출력하겠다.
+		
+		// 1 3 5 7 9
+		//for문 한개로 끝낸 버전=> 반복 5번
+		//=> 이게 더 효율적임
+		for (int i=1 ; i<10; i+=2) {
+			
+			System.out.print(i +" ");
+		}
+		System.out.println("");
+		
+		
+		//for문 안에 if문을 포함시킨 버전=> 10번 
+		for(int i=1; i<=10 ; i++) {
+			//현재 i가 홀수인지 체크
+			if ((i%2)==1) {
+				System.out.print(i +" ");
+			}	
+			
+		}
+
+		
+	}
+	   public void method8() {
+		//구구단 2단
+		 /*
+		  *  2*1= 2
+		  *  2*2= 4
+		  *  2*3= 6
+		  *  ....
+		  *  2*9= 18
+		  *  2만 동일 뒤에만 달라짐 
+		  */
+		   System.out.println("-----2단-----");
+		   
+		   for (int i=1 ;i<10 ; i++) {
+			   
+			   System.out.println("2 * "+ i +" = "+ (2*i)  );
+			   
+		   } 
+	   }
+	    public void method9() {
+	    	
+	    	//사용자로부터 단수를 입력받아서 해당 단 출력
+	    	System.out.println("----구구단 생성기----");
+	    	
+	    	Scanner sc = new Scanner(System.in);
+	    	System.out.print("2 ~ 9 사이의 단수 입력 : ");
+	    	int num = sc.nextInt();
+	    	
+	    	// 2~9 사이의 범위가 맞는지 체크
+	    	if(num >=2 && num <=9) {
+	    		for (int i=1; i<= 9; i++)
+	    		 System.out.println( num +" * "+ i + " = "+ (num*i)  );
+	    		
+	    	}
+	    	else {
+	    		System.out.println("잘못 입력했습니다.");
+	    	}
+	   	
+	    }
 	
+	    public void method10() {
+	    	//2단에서부터 9단까지 모두 다 출력
+	    	
+	    	//9단 먼저 찍고 확장
+	    	
+	    	//규칙을 찾자!
+	    	//9라는 단수 부분이 2,3,4,5,6,7,8,9 까지 =>1씩 증가하면서 바뀌면 
+	    	//모든 구구단이 출력될거 같다. 
+	    	
+	    	for (int j=2 ; j <10 ; j++) { //반복 8번
+	    		
+	    		System.out.println("-----"+j+"단-----");
+		    	
+		    	for (int i =1 ; i<=9; i++) {  //반복9번
+		    		System.out.println( j+" * "+i+" = "+(j * i));
+		    	}
+	    		
+	    	}
+	    	//총 반복 횟수: 겉의 for문 * 안쪽 for문 = 8*9= 72번
+	    		
+	    	
+	    }
+	    	public void method11() {
+	    		
+	    	//1 2 3 4 5
+	    	//1 2 3 4 5
+	    	//1 2 3 4 5
+	    		
+	    		for (int i =0 ; i< 3; i++ ) {
+	    		
+	    			//System.out.println("1 2 3 4 5");
+	    	        for (int j=1 ; j<6 ; j++) {
+	    	        System.out.print(j +" ");
+	    	        
+	    	        }//이 시점에서 System.out.print(j +" ");
+	    	        //1 2 3 4 5 1 2 3 4 5 1 2 3 4 5	
+	    	        System.out.println();	
+	    			
+	    		}
 	
-	
-	
-	
+	    	
+	    }
+	    public void method12() {
+	    	//*****
+	    	//*****
+	    	//*****
+	    	//*****
+	    	
+	    	/*
+	    	for(int i=0; i<4; i++) {
+	    		
+	    		//System.out.println("*****");
+	    		
+	    		for (int j=0; j<5; j++) {
+	    	   System.out.print("*");
+	    	 }//이 시점에서 System.out.print("*****");
+	    		System.out.println();
+	    	}
+	    	*/
+	    	
+	    	//*****  => i = 5
+	    	//*****  => i = 10
+	    	//*****  => i = 15
+	    	//*****  => i = 20
+	    	//규칙 : 5의 배수 
+	    	//(5의 배수 == 5로 나누었을때 나머지가 0인 경우)
+	    	//애초에 반복을 20번 돌리겠다.
+	    	for(int i=1; i<=20 ; i++) {
+	    		
+	    		System.out.print("*");
+	    		
+	    		if((i % 5) == 0) {
+	    			System.out.println();
+	    		}
+	    	}
+	    }
+         
+	    public void method13() {
+	    	//1***
+	    	//*2**
+	    	//**3*
+	    	//***4
+	    	
+	    	//크게 4바퀴 작게 4바퀴
+	    	for (int i=1; i <=4; i++) { //크게 4바퀴
+	    		
+	    		for (int j=1; j<=4 ; j++) { //작게 4바퀴
+	    			
+	    			//System.out.print("*");
+	    			if(i==j) {
+	    				System.out.print(i);
+	    			}
+	    			else{
+	    				System.out.print("*");
+	    			}
+			
+	    		} //이 시점에서 System.out.print("****");
+	    		System.out.println(); //개행
+	    		
+	    	  }
+	    	/*
+	    	 * for 문안에 for문을 겹쳐 쓸 경우 "중첩 for문"이라고도 부른다.
+	    	 * if 문안에 if문을 겹쳐 쓸 경우 "중첩 if문"이라고도 부른다. 
+	    	 */
+	    	}
+	    public void method14() {
+	    	
+	    	//문자열을 입력 받아
+	    	//0번째 글자, 1번째 글자, 2번째 글자를 추출하는 프로그램
+	    	
+	    	Scanner sc = new Scanner(System.in);
+	    	System.out.print("문자열 입력 : ");
+	    	String str= sc.nextLine();
+	    	//반복문 쓰기 전
+	    	/*
+	    	char ch1 = str.charAt(0);  System.out.println(str.charAt(0));
+	    	char ch2 = str.charAt(1);
+	    	char ch3 = str.charAt(2);
+	    	*/
+	    	
+	    	//반복문 버전으로 바꿔보겠다.
+	    	for (int i=0; i<3 ;i++) {
+	    		char ch = str.charAt(i);
+	    		System.out.println((i+1)+ " 번째 문자 : "+ch);
+	    		
+	    	}
+	    	
+	    	
+	    	
+	    }
+	    	
+	    	
+	    	
+	    	
 	
 	
 	
